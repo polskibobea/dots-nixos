@@ -9,6 +9,13 @@
     };
   };
 
+  swapDevices = [
+    {
+      device = "/swapfile";
+      size = 8 * 1024;
+    }
+  ];
+
   networking = {
     hostName = "bobrowniki";
     networkmanager.enable = true;
