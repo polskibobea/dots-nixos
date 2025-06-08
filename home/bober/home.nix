@@ -5,5 +5,12 @@ _: {
     stateVersion = "25.11";
   };
 
-  programs.zsh.enable = true;
+  programs.zsh = {
+    enable = true;
+    ohMyZsh = {
+      enable = true;
+      theme = "bira";
+      plugins = [ "git" ]; 
+    };
+  };
 }
