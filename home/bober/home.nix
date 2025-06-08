@@ -5,23 +5,23 @@ _: {
     stateVersion = "25.11";
   };
 
-programs.neovim = {
-  enable = true;
- };
-
-
-
-
-programs.zsh = {
-  enable = true;
-  enableCompletion = true;
-  autosuggestion.enable = true;
-  syntaxHighlighting.enable = true;
-  oh-my-zsh.theme = "bira";
-  shellAliases = {
-    ll = "ls -l";
-    update = "sudo nixos-rebuild switch";
+  programs.alacritty = {
+    enable = true;
   };
-  history.size = 10000;
-};
+
+  programs.neovim = {
+    enable = true;
+  };
+
+  programs.zsh = {
+    enable = true;
+    autosuggestion.enable = true;
+    enableCompletion = true;
+  };
+  programs.zsh.oh-my-zsh = {
+   enable = true;
+   theme = "bira";
+   plugins = [ "git" "sudo" ];
+   };
+
 }
