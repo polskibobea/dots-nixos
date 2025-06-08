@@ -1,8 +1,9 @@
-{ config, pkgs, ... }:
-
-{
-  home.username = "bober";
-  home.homeDirectory = "/home/bober";
+_: {
+  home = {
+    username = "bober";
+    homeDirectory = "/home/bober";
+    stateVersion = "25.11";
+  };
 
   programs.zsh.enable = true;
 }
