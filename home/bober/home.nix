@@ -19,9 +19,15 @@ _: {
     enableCompletion = true;
   };
   programs.zsh.oh-my-zsh = {
-   enable = true;
-   theme = "bira";
-   plugins = [ "git" "sudo" ];
-   };
+    enable = true;
+    theme = "bira";
+    plugins = ["git" "sudo"];
+  };
 
+  programs.htop.enable = true;
+
+  nix.gc = {
+    automatic = true;
+    frequency = "weekly";
+  };
 }
