@@ -1,0 +1,7 @@
+[09:14:23 2025-06-10] FETCHING Version 2.40.11
+[09:14:23 2025-06-10] DOWNLOADING https://github.com/spicetify/cli/releases/download/v2.40.11/spicetify-2.40.11-linux-amd64.tar.gz
+[09:14:26 2025-06-10] EXTRACTING /home/bober/.spicetify/spicetify.tar.gz
+[09:14:26 2025-06-10] SETTING EXECUTABLE PERMISSIONS TO /home/bober/.spicetify/spicetify
+[09:14:26 2025-06-10] REMOVING /home/bober/.spicetify/spicetify.tar.gz
+[09:14:26 2025-06-10] spicetify v2.40.11 was installed successfully to /home/bober/.spicetify
+[09:14:26 2025-06-10] Run 'spicetify --help' to get started

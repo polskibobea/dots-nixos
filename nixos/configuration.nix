@@ -59,6 +59,9 @@
     (discord.override {withVencord = true;})
     git
     neofetch
+    spotify
+    unzip
+    python3
     usbutils
     vim
     wget
