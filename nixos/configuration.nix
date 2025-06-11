@@ -21,6 +21,7 @@
     networkmanager.enable = true;
   };
 
+
   time.timeZone = "Europe/Warsaw";
 
   services = {
@@ -41,7 +42,7 @@
 
     openssh.enable = true;
   };
-
+  programs.hyprland.withUWSM = true;
   programs.steam = {
     enable = true;
     remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play

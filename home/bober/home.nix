@@ -1,4 +1,4 @@
-_: {
+_:{
   home = {
     username = "bober";
     homeDirectory = "/home/bober";
@@ -7,7 +7,17 @@ _: {
 
   programs.alacritty = {
     enable = true;
-  };
+    settings = {
+    shell = {
+      program = "/etc/profiles/per-user/bober/bin/zsh";
+      args = ["-l"];
+      };
+     window = {
+      opacity = 0.95;
+      blur = true;
+      };
+    };
+ };
 
   programs.neovim = {
     enable = true;
