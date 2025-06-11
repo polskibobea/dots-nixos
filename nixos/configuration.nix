@@ -24,8 +24,10 @@
   time.timeZone = "Europe/Warsaw";
 
   services = {
-    displayManager.gdm.enable = true;
     desktopManager.gnome.enable = true;
+
+    displayManager.gdm.enable = true;
+
 
     xserver.xkb = {
       layout = "pl";
@@ -47,25 +49,30 @@
     localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
   };
 
-  users.users.bober = {
+  programs.hyprland.enable = true; 
+   users.users.bober = {
     isNormalUser = true;
     extraGroups = ["wheel"];
   };
 
   programs.firefox.enable = true;
   nix.settings.experimental-features = ["flakes" "nix-command"];
-
   environment.systemPackages = with pkgs; [
     (discord.override {withVencord = true;})
     git
     neofetch
     spotify
     unzip
+    hyprshot
     python3
+    bluetui
+    blueman
     usbutils
     vim
     wget
-  ];
+    jetbrains-mono
+    font-awesome
+];
 
   i18n.defaultLocale = "pl_PL.UTF-8";
 

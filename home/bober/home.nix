@@ -31,7 +31,6 @@ _: {
   };
 
   programs.htop.enable = true;
-
   nix.gc = {
     automatic = true;
     frequency = "weekly";
@@ -43,8 +42,13 @@ _: {
     exec-once = waybar
     bind = SUPER, SPACE, exec, alacritty
     bind = SUPER, D, exec, discord
+    bind = , Print, exec, hyprshot -m region -o both
+    binde =, XF86AudioRaiseVolume, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ 0 && wpctl set-volume -l 1.4 @DEFAULT_AUDIO_SINK@ 5%+
+    binde =, XF86AudioLowerVolume, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ 0 && wpctl set-volume -l 1.4 @DEFAULT_AUDIO_SINK@ 5%-
+    bindl = , XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
     monitor=,highres,auto,1
     bind = SUPER, E, exec, wofi --show drun
+    bind = SUPER, Q, killactive
     #workspace
     bind = SUPER, 1, workspace, 1
     bind = SUPER, 1, workspace, 1
@@ -238,7 +242,7 @@ _: {
           border: 0;
           border-radius: 0;
           padding: 0 0;
-          font-family: "JetBrainsMono Nerd Font", "Font Awesome 6 Free";
+          font-family: "JetBrainsMono NF", "JetBrainsMono NF";
           font-size: 16px;
           margin-right: 2px;
           margin-left: 2px;
