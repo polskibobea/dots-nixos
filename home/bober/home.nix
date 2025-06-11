@@ -31,7 +31,7 @@ _:{
       cd1 = "cd ..";
       form = "nix fmt";
       nv = "nvim";
-      rebuild = "sudo nixos-rebuild switch --flake ~/dots-nixos";
+      rebuild = "rm ~/.config/alacritty/alacritty.toml && sudo nixos-rebuild switch --flake ~/dots-nixos && alacritty migrate";
     };
   };
   programs.zsh.oh-my-zsh = {
