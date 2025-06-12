@@ -68,8 +68,9 @@
   environment.systemPackages = with pkgs; [
     (discord.override {withVencord = true;})
     git
-    neofetch
+    fastfetch
     vulkan-tools
+    pavucontrol
     spotify
     unzip
     qemu
@@ -79,6 +80,7 @@
     blueman
     gamescope
     vulkan-loader
+    hyperfine
     usbutils
     vim
     wget

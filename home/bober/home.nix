@@ -56,7 +56,8 @@ _:{
     binde =, XF86AudioRaiseVolume, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ 0 && wpctl set-volume -l 1.4 @DEFAULT_AUDIO_SINK@ 5%+
     binde =, XF86AudioLowerVolume, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ 0 && wpctl set-volume -l 1.4 @DEFAULT_AUDIO_SINK@ 5%-
     bindl = , XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
-    monitor=,highres,auto,1
+    monitor=eDP-1,1920x1080@60,0x0,1
+    monitor=HDMI-A-1,1366x768@60,1920x0,1
     bind = SUPER, E, exec, wofi --show drun
     bind = SUPER, Q, killactive
     #workspace
