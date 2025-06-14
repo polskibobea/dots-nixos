@@ -1,10 +1,11 @@
+{ pkgs, ... }:
 _:{
   home = {
     username = "bober";
     homeDirectory = "/home/bober";
     stateVersion = "25.11";
   };
-
+  
   programs.alacritty = {
     enable = true;
     settings = {
@@ -13,7 +14,7 @@ _:{
       args = ["-l"];
       };
      window = {
-      opacity = 0.95;
+      opacity = 0.95;    
       blur = true;
       };
     };
@@ -40,6 +41,14 @@ _:{
     plugins = ["git" "sudo"];
   };
 
+   programs.firefox = {
+  enable = true;
+  profiles.default.extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
+  ublock-origin
+  bitwarden
+];
+  };
+  
   programs.htop.enable = true;
   nix.gc = {
     automatic = true;
@@ -48,7 +57,7 @@ _:{
   programs.wofi.enable = true;
   wayland.windowManager.hyprland = {
     enable = true;
-    extraConfig = "
+   extraConfig = "
     exec-once = waybar
     bind = SUPER, SPACE, exec, alacritty
     bind = SUPER, D, exec, discord
