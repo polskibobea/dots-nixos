@@ -1,24 +1,23 @@
-{ pkgs, ... }:
-_:{
+{pkgs, ...}: _: {
   home = {
     username = "bober";
     homeDirectory = "/home/bober";
     stateVersion = "25.11";
   };
-  
+
   programs.alacritty = {
     enable = true;
     settings = {
-    shell = {
-      program = "/etc/profiles/per-user/bober/bin/zsh";
-      args = ["-l"];
+      shell = {
+        program = "/etc/profiles/per-user/bober/bin/zsh";
+        args = ["-l"];
       };
-     window = {
-      opacity = 0.95;    
-      blur = true;
+      window = {
+        opacity = 0.95;
+        blur = true;
       };
     };
- };
+  };
 
   programs.neovim = {
     enable = true;
@@ -41,14 +40,14 @@ _:{
     plugins = ["git" "sudo"];
   };
 
-   programs.firefox = {
-  enable = true;
-  profiles.default.extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
-  ublock-origin
-  bitwarden
-];
+  programs.firefox = {
+    enable = true;
+    profiles.default.extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
+      ublock-origin
+      bitwarden
+    ];
   };
-  
+
   programs.htop.enable = true;
   nix.gc = {
     automatic = true;
@@ -57,8 +56,9 @@ _:{
   programs.wofi.enable = true;
   wayland.windowManager.hyprland = {
     enable = true;
-   extraConfig = "
+    extraConfig = "
     exec-once = waybar
+    bind=SUPER,F,fullscreen
     bind = SUPER, SPACE, exec, alacritty
     bind = SUPER, D, exec, discord
     bind = , Print, exec, hyprshot -m region -o both
@@ -67,7 +67,7 @@ _:{
     bindl = , XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
     monitor=eDP-1,1920x1080@60,0x0,1
     monitor=HDMI-A-1,1366x768@60,1920x0,1
-    bind = SUPER, E, exec, wofi --show drun
+    bind = SUPER, E, exec, wofi --show drun 
     bind = SUPER, Q, killactive
     #workspace
     bind = SUPER, 1, workspace, 1

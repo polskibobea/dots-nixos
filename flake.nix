@@ -11,17 +11,22 @@
     };
   };
 
-  outputs = { nixpkgs, home-manager, nur, ... } @ inputs: let
+  outputs = {
+    nixpkgs,
+    home-manager,
+    nur,
+    ...
+  } @ inputs: let
     system = "x86_64-linux";
     pkgs = import nixpkgs {
       inherit system;
       config.allowUnfree = true;
-      overlays = [ nur.overlay ];
+      overlays = [nur.overlay];
     };
   in {
     nixosConfigurations.bobrowniki = nixpkgs.lib.nixosSystem {
       inherit system pkgs;
-      specialArgs = { inherit inputs; };
+      specialArgs = {inherit inputs;};
       modules = [
         ./nixos/configuration.nix
         home-manager.nixosModules.home-manager
@@ -30,7 +35,7 @@
             useGlobalPkgs = true;
             useUserPackages = true;
             users.bober = import ./home/bober/home.nix {inherit pkgs;};
-            extraSpecialArgs = { 
+            extraSpecialArgs = {
               inherit inputs;
               inherit (inputs) nur;
             };

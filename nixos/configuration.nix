@@ -2,7 +2,7 @@
   imports = [./hardware-configuration.nix];
 
   boot = {
-    kernelPackages = pkgs.linuxPackages_latest;
+    kernelPackages = pkgs.linuxPackages_zen;
     loader = {
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
@@ -52,7 +52,6 @@
   virtualisation.libvirtd.enable = true;
   virtualisation.spiceUSBRedirection.enable = true;
 
-
   programs.hyprland.enable = true;
   users.users.bober = {
     isNormalUser = true;
@@ -63,6 +62,12 @@
     enable = true;
   };
 
+  programs = {
+    gamescope = {
+      enable = true;
+      capSysNice = true;
+    };
+  };
   programs.firefox.enable = true;
   nix.settings.experimental-features = ["flakes" "nix-command"];
   environment.systemPackages = with pkgs; [
@@ -76,9 +81,9 @@
     qemu
     hyprshot
     python3
+    heroic
     bluetui
     blueman
-    gamescope
     vulkan-loader
     hyperfine
     usbutils
