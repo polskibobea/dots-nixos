@@ -1,5 +1,7 @@
 {pkgs, ...}: {
-  imports = [./hardware-configuration.nix];
+  imports = [./hardware-configuration.nix
+             ../nvim/nvim.nix
+  ];
 
   boot = {
     kernelPackages = pkgs.linuxPackages_zen;
