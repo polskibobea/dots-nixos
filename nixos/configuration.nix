@@ -46,7 +46,7 @@
     dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
     localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
   };
-
+  programs.java.enable = true;
   programs.virt-manager.enable = true;
   users.groups.libvirtd.members = ["bober"];
   virtualisation.libvirtd.enable = true;
@@ -80,7 +80,9 @@
     unzip
     qemu
     hyprshot
+    hyprpaper
     python3
+    prismlauncher
     heroic
     bluetui
     blueman
@@ -90,6 +92,7 @@
     vim
     wget
     xdg-desktop-portal
+    brightnessctl
     xdg-desktop-portal-wlr
     mesa
     jetbrains-mono
