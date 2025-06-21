@@ -16,6 +16,7 @@
     nixpkgs,
     home-manager,
     nur,
+    nvf,
     ...
   } @ inputs: let
     system = "x86_64-linux";
@@ -25,6 +26,11 @@
       overlays = [nur.overlay];
     };
   in {
+   packages."x86_64-linux".default =
+     (nvf.lib.neovimConfiguration {
+       pkgs=nixpkgs.legacyPackages."x86_64-linux";
+       modules = [ ./nvim/nvim.nix ];
+       }).neovim;
     nixosConfigurations.bobrowniki = nixpkgs.lib.nixosSystem {
       inherit system pkgs;
       specialArgs = {inherit inputs;};
@@ -35,7 +41,7 @@
           home-manager = {
             useGlobalPkgs = true;
             useUserPackages = true;
-            users.bober = import ./home/bober/home.nix {inherit pkgs;};
+            users.bober = import ./home/bober/home.nix {inherit pkgs inputs ;};
             extraSpecialArgs = {
               inherit inputs;
               inherit (inputs) nur;

@@ -1,6 +1,6 @@
 {pkgs, ...}: {
-  imports = [./hardware-configuration.nix
-             ../nvim/nvim.nix
+  imports = [
+    ./hardware-configuration.nix
   ];
 
   boot = {
@@ -26,8 +26,11 @@
   time.timeZone = "Europe/Warsaw";
 
   services = {
-    displayManager.gdm.enable = true;
+                #displayManager.gdm.enable = true;
     orca.enable = false;
+                displayManager.sddm.wayland.enable = true;
+                xserver.enable = true;
+    displayManager.sddm.enable = true;
     desktopManager.gnome.enable = true;
     xserver.xkb = {
       layout = "pl";
@@ -41,9 +44,22 @@
 
     openssh.enable = true;
   };
-  programs.hyprland.withUWSM = true;
+ # programs.hyprland.withUWSM = true;
+
+
+    systemd.user.services.steam-gamescope-session = {
+    description = "Steam Big Picture with Gamescope";
+    wantedBy = [ "graphical-session.target" ];
+
+    serviceConfig = {
+      Type = "simple";
+      ExecStart = "${pkgs.gamescope}/bin/gamescope -W 1920 -H 1080 -r 60 -- steam -bigpicture";
+    };
+  };
+
   programs.steam = {
     enable = true;
+    gamescopeSession.enable = true;
     remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
     dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
     localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
@@ -81,9 +97,10 @@
     spotify
     unzip
     qemu
-    hyprshot
+    hyprshot 
     hyprpaper
     python3
+    easyeffects
     prismlauncher
     heroic
     bluetui
@@ -91,7 +108,6 @@
     vulkan-loader
     hyperfine
     usbutils
-    vim
     wget
     xdg-desktop-portal
     brightnessctl

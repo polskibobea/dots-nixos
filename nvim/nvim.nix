@@ -1,23 +1,23 @@
- { config, pkgs, ... };
+ { pkgs, lib, ... }:
 
- {
-   
-   vim = {
-      enable = true;
-      viAlias =true;
+  {  
+    vim = {
+      theme = {
+         enable = true;
+         name = "gruvbox";
+         style = "dark";
+      };
 
-      plugins = { 
-       nvim-treesitter.enable = true;
-       telescope.enable = true;
-       };
+      statusline.lualine.enable = true;
+      telescope.enable = true;
+      autocomplete.nvim-cmp.enable = true;
 
-       lsp = {
-         enable = true; 
-	 formatOnSave = true;
-	 servers = {
-	   nixd.enable = true;
-	   lua-ls.enable = true;
-	   };
-	};
+      languages = {
+         enableLSP = true;
+	 enableTreesitter = true;
+	 nix.enable = true;
+	 ts.enable = true;
+	 rust.enable = true;
      };
+    };
    }
