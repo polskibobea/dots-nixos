@@ -1,13 +1,17 @@
-{pkgs, inputs, ...}: _: {
+{
+  pkgs,
+  inputs,
+  ...
+}: _: {
   home = {
     username = "bober";
     homeDirectory = "/home/bober";
     stateVersion = "25.11";
   };
   imports = [
-      inputs.nvf.homeManagerModules.default
- #     ../../nvim/nvim.nix
-      ];
+    inputs.nvf.homeManagerModules.default
+    #     ../../nvim/nvim.nix
+  ];
   programs.alacritty = {
     enable = true;
     settings = {

@@ -26,12 +26,16 @@
   time.timeZone = "Europe/Warsaw";
 
   services = {
-                #displayManager.gdm.enable = true;
+    #displayManager.gdm.enable = true;
     orca.enable = false;
-                displayManager.sddm.wayland.enable = true;
-                xserver.enable = true;
+    displayManager.sddm.wayland.enable = true;
+    xserver.enable = true;
     displayManager.sddm.enable = true;
     desktopManager.gnome.enable = true;
+    usbmuxd = {
+      enable = true;
+      package = pkgs.usbmuxd2;
+    };
     xserver.xkb = {
       layout = "pl";
       options = "eurosign:e,caps:escape";
@@ -44,12 +48,11 @@
 
     openssh.enable = true;
   };
- # programs.hyprland.withUWSM = true;
+  # programs.hyprland.withUWSM = true;
 
-
-    systemd.user.services.steam-gamescope-session = {
+  systemd.user.services.steam-gamescope-session = {
     description = "Steam Big Picture with Gamescope";
-    wantedBy = [ "graphical-session.target" ];
+    wantedBy = ["graphical-session.target"];
 
     serviceConfig = {
       Type = "simple";
@@ -97,9 +100,13 @@
     spotify
     unzip
     qemu
-    hyprshot 
+    hyprshot
     hyprpaper
     python3
+    icloudpd
+    python3Packages.pip
+    ifuse
+    libimobiledevice
     easyeffects
     prismlauncher
     heroic
