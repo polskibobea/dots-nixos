@@ -12,6 +12,9 @@
     inputs.nvf.homeManagerModules.default
     #     ../../nvim/nvim.nix
   ];
+#  home.packages = [
+ #   inputs.nvf.packages.${pkgs.system}.default
+  #];
   programs.alacritty = {
     enable = true;
     settings = {
@@ -69,6 +72,8 @@
       ];
     };
     extraConfig = "
+    bind = SUPER, P, exec, hyprctl dispatch dpms off
+    bind = SUPER, L, exec, hyprctl dispatch dpms on
     exec-once = waybar
     bind=SUPER,F,fullscreen
     bind = SUPER, SPACE, exec, alacritty
@@ -79,6 +84,7 @@
     bindl = , XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
     bind = SUPER, E, exec, wofi --show drun 
     bind = SUPER, Q, killactive
+    bind = SUPER, Y, togglefloating
     bind = ,XF86MonBrightnessDown, exec, brightnessctl s 10%-
     bind = ,XF86MonBrightnessUp, exec, brightnessctl s +10%
     #workspace

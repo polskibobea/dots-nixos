@@ -32,6 +32,11 @@
     xserver.enable = true;
     displayManager.sddm.enable = true;
     desktopManager.gnome.enable = true;
+   # auto-epp = {
+    # enable = true;
+     #acState = "performance";
+     #batteryState = "power";
+  #};
     usbmuxd = {
       enable = true;
       package = pkgs.usbmuxd2;
@@ -114,8 +119,12 @@
     blueman
     vulkan-loader
     hyperfine
+    btop
+    htop
     usbutils
     wget
+    auto-epp
+    linuxKernel.packages.linux_zen.cpupower
     xdg-desktop-portal
     brightnessctl
     xdg-desktop-portal-wlr
