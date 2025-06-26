@@ -1,15 +1,15 @@
 {
   disko.devices = {
     disk = {
-      my-disk = {
-        device = "/dev/sda";
+      dyskus = {
+        device = "/dev/nvme0n1";
         type = "disk";
         content = {
           type = "gpt";
           partitions = {
             ESP = {
               type = "EF00";
-              size = "500M";
+              size = "1500M";
               content = {
                 type = "filesystem";
                 format = "vfat";
@@ -17,12 +17,30 @@
                 mountOptions = [ "umask=0077" ];
               };
             };
-            root = {
+            cryptroot = {
+              size = "50GiB";
+              content = {
+                type = "luks";
+                name = "root";
+                luks = {};
+                inner = {
+                  type = "filesystem";
+                  format = "xfs";
+                  mountpoint = "/";
+                };
+              };
+            };
+            crypthome = {
               size = "100%";
               content = {
-                type = "filesystem";
-                format = "ext4";
-                mountpoint = "/";
+                type = "luks";
+                name = "home";
+                luks = {};
+                inner = {
+                  type = "filesystem";
+                  format = "xfs";
+                  mountpoint = "/home";
+                };
               };
             };
           };
@@ -31,3 +49,4 @@
     };
   };
 }
+
