@@ -36,8 +36,8 @@
       inherit system pkgs;
       specialArgs = {inherit inputs;};
       modules = [
-        ./nvim/nvim.nix
-	./dysk/dysk.nix
+        #./nvim/nvim.nix
+	#./dysk/dysk.nix
         disko.nixosModules.disko
         ./nixos/configuration.nix
         home-manager.nixosModules.home-manager
