@@ -10,7 +10,7 @@
       url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-     disko.url = "github:nix-community/disko";
+    disko.url = "github:nix-community/disko";
   };
 
   outputs = {
@@ -31,13 +31,16 @@
     packages."x86_64-linux".default =
       (nvf.lib.neovimConfiguration {
         pkgs = nixpkgs.legacyPackages."x86_64-linux";
+
+        #modules = [./nvim/nvim.nix];
       }).neovim;
     nixosConfigurations.bobrowniki = nixpkgs.lib.nixosSystem {
       inherit system pkgs;
       specialArgs = {inherit inputs;};
       modules = [
         #./nvim/nvim.nix
-	#./dysk/dysk.nix
+	./service/default.nix
+        #./dysk/dysk.nix
         disko.nixosModules.disko
         ./nixos/configuration.nix
         home-manager.nixosModules.home-manager

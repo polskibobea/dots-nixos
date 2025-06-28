@@ -73,10 +73,10 @@
     localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
   };
   programs.java.enable = true;
-  programs.virt-manager.enable = true;
-  users.groups.libvirtd.members = ["bober"];
-  virtualisation.libvirtd.enable = true;
-  virtualisation.spiceUSBRedirection.enable = true;
+  #programs.virt-manager.enable = true;
+  #users.groups.libvirtd.members = ["bober"];
+  #virtualisation.libvirtd.enable = true;
+  #virtualisation.spiceUSBRedirection.enable = true;
 
   programs.hyprland.enable = true;
   users.users.bober = {
