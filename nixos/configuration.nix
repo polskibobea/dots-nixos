@@ -25,29 +25,6 @@
 
   time.timeZone = "Europe/Warsaw";
 
-  services = {
-    #displayManager.gdm.enable = true;
-    orca.enable = false;
-    displayManager.sddm.wayland.enable = true;
-    xserver.enable = true;
-    displayManager.sddm.enable = true;
-    desktopManager.gnome.enable = true;
-   # auto-epp = {
-    # enable = true;
-     #acState = "performance";
-     #batteryState = "power";
-  #};
-    usbmuxd = {
-      enable = true;
-      package = pkgs.usbmuxd2;
-    };
-    xserver.xkb = {
-      layout = "pl";
-      options = "eurosign:e,caps:escape";
-    };
-
-    openssh.enable = true;
-  };
   # programs.hyprland.withUWSM = true;
 
   systemd.user.services.steam-gamescope-session = {
@@ -92,42 +69,6 @@
   hardware.xone.enable = true;
   programs.firefox.enable = true;
   nix.settings.experimental-features = ["flakes" "nix-command"];
-  environment.systemPackages = with pkgs; [
-    (discord.override {withVencord = true;})
-    git
-    fastfetch
-    vulkan-tools
-    pavucontrol
-    spotify
-    unzip
-    qemu
-    hyprshot
-    hyprpaper
-    python3
-    icloudpd
-    python3Packages.pip
-    ifuse
-    libimobiledevice
-    easyeffects
-    prismlauncher
-    heroic
-    bluetui
-    blueman
-    vulkan-loader
-    hyperfine
-    btop
-    htop
-    usbutils
-    wget
-    auto-epp
-    linuxKernel.packages.linux_zen.cpupower
-    xdg-desktop-portal
-    brightnessctl
-    xdg-desktop-portal-wlr
-    mesa
-    jetbrains-mono
-    font-awesome
-  ];
   nix.settings.auto-optimise-store = true;
   boot.loader.systemd-boot.configurationLimit = 5; # lub boot.loader.grub.configurationLimit
   i18n.defaultLocale = "pl_PL.UTF-8";
