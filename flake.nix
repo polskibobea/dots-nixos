@@ -40,6 +40,7 @@
       modules = [
         #./nvim/nvim.nix
 	./service/default.nix
+	./programFiles/default.nix
         #./dysk/dysk.nix
         disko.nixosModules.disko
         ./nixos/configuration.nix

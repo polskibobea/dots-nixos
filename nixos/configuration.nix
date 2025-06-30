@@ -46,11 +46,6 @@
       options = "eurosign:e,caps:escape";
     };
 
-    pipewire = {
-      enable = true;
-      pulse.enable = true;
-    };
-
     openssh.enable = true;
   };
   # programs.hyprland.withUWSM = true;
@@ -94,6 +89,7 @@
       capSysNice = true;
     };
   };
+  hardware.xone.enable = true;
   programs.firefox.enable = true;
   nix.settings.experimental-features = ["flakes" "nix-command"];
   environment.systemPackages = with pkgs; [

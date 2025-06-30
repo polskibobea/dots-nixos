@@ -1,4 +1,6 @@
-{lib, config,}
-import = [
+{config, ...}:
+{
+imports = [
  ./pipewire.nix
-]
+];
+}
