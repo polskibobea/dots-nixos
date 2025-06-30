@@ -1,5 +1,6 @@
-{...}:
-{
-imports = [ 
-./pkgs.nix ];
+{...}: {
+  imports = [
+    ./pkgs.nix
+    ./game.nix
+  ];
 }
