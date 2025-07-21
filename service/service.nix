@@ -7,11 +7,11 @@ services = {
     xserver.enable = true;
     displayManager.sddm.enable = true;
     desktopManager.gnome.enable = true;
-   # auto-epp = {
-    # enable = true;
-     #acState = "performance";
-     #batteryState = "power";
-  #};
+    supergfxd.enable = true;
+    asusd = {
+      enable = true;
+      enableUserService = true;
+    };
     usbmuxd = {
       enable = true;
       package = pkgs.usbmuxd2;

@@ -2,12 +2,14 @@
   environment.systemPackages = with pkgs; [
     (discord.override {withVencord = true;})
     git
+    mangohud
     fastfetch
     vulkan-tools
     pavucontrol
     spotify
     unzip
     qemu
+    gamescope
     hyprshot
     hyprpaper
     python3

@@ -6,12 +6,7 @@
     dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
     localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
   };
-  programs = {
-    gamescope = {
-      enable = true;
-      capSysNice = true;
-    };
-  };
+  programs.gamemode.enable = true;
   hardware.xone.enable = true;
   systemd.user.services.steam-gamescope-session = {
     description = "Steam Big Picture with Gamescope";

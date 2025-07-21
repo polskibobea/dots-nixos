@@ -13,17 +13,17 @@
   ];
 
   boot.initrd.availableKernelModules = ["nvme" "xhci_pci" "usbhid" "usb_storage" "sd_mod"];
-  boot.initrd.kernelModules = [];
+  boot.initrd.kernelModules = [ "amdgpu" ];
   boot.kernelModules = [];
   boot.extraModulePackages = [];
 
   fileSystems."/" = {
-    device = "/dev/disk/by-uuid/832aeb07-350a-4342-927a-7453f0cbb474";
+    device = "/dev/nvme0n1p3";
     fsType = "xfs";
   };
 
   fileSystems."/boot" = {
-    device = "/dev/nvme0n1p3";
+    device = "/dev/nvme0n1p1";
     fsType = "vfat";
     options = ["fmask=0022" "dmask=0022"];
   };

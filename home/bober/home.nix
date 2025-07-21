@@ -29,8 +29,19 @@
     };
   };
 
-  programs.neovim = {
+
+  gtk = {
+  enable = true;
+  theme = {
+  name = "Adwaita-dark";
+        package = pkgs.gnome-themes-extra;
+      };
+  };
+
+qt = {
     enable = true;
+    platformTheme.name = "adwaita";
+    style.name = "adwaita-dark";
   };
 
   programs.zsh = {
@@ -66,6 +77,8 @@
   programs.wofi.enable = true;
   wayland.windowManager.hyprland = {
     enable = true;
+    xwayland.enable = true;
+     systemd.enable = true;
     settings = {
       monitor = [
         "eDP-1,1920x1080@60,0x0,1"

@@ -25,7 +25,7 @@
     pkgs = import nixpkgs {
       inherit system;
       config.allowUnfree = true;
-      overlays = [nur.overlay];
+      overlays = [nur.overlays.default];
     };
   in {
     packages."x86_64-linux".default =
@@ -36,9 +36,10 @@
       }).neovim;
     nixosConfigurations.bobrowniki = nixpkgs.lib.nixosSystem {
       inherit system pkgs;
-      specialArgs = {inherit inputs;};
-      modules = [
-        #./nvim/nvim.nix
+ specialArgs = {inherit inputs;};
+        modules = [
+nvf.nixosModules.default
+./nvim/nvim.nix
 	./service/default.nix
 	./programFiles/default.nix
         #./dysk/dysk.nix
