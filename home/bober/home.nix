@@ -43,7 +43,14 @@ qt = {
     platformTheme.name = "adwaita";
     style.name = "adwaita-dark";
   };
-
+  programs.git = {
+  enable = true; 
+    userName  = "polskibobea";
+    userEmail = "lubiebobea@gmail.com";
+    aliases = {
+    com = "commit";
+    };
+  };
   programs.zsh = {
     enable = true;
     autosuggestion.enable = true;
