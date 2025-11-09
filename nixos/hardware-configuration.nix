@@ -4,7 +4,6 @@
 {
   config,
   lib,
-  pkgs,
   modulesPath,
   ...
 }: {
@@ -18,12 +17,12 @@
   boot.extraModulePackages = [];
 
   fileSystems."/" = {
-    device = "/dev/nvme0n1p3";
+    device = "/dev/nvme0n1p6";
     fsType = "xfs";
   };
 
   fileSystems."/boot" = {
-    device = "/dev/nvme0n1p1";
+    device = "/dev/nvme0n1p5";
     fsType = "vfat";
     options = ["fmask=0022" "dmask=0022"];
   };

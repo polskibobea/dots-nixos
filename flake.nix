@@ -10,15 +10,15 @@
       url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    disko.url = "github:nix-community/disko";
+    spicetify-nix.url = "github:the-argus/spicetify-nix";
   };
 
   outputs = {
     nixpkgs,
     home-manager,
     nur,
+    spicetify-nix,
     nvf,
-    disko,
     ...
   } @ inputs: let
     system = "x86_64-linux";
@@ -28,29 +28,22 @@
       overlays = [nur.overlays.default];
     };
   in {
-    packages."x86_64-linux".default =
-      (nvf.lib.neovimConfiguration {
-        pkgs = nixpkgs.legacyPackages."x86_64-linux";
-
-        #modules = [./nvim/nvim.nix];
-      }).neovim;
     nixosConfigurations.bobrowniki = nixpkgs.lib.nixosSystem {
       inherit system pkgs;
- specialArgs = {inherit inputs;};
-        modules = [
-nvf.nixosModules.default
-./nvim/nvim.nix
-	./service/default.nix
-	./programFiles/default.nix
-        #./dysk/dysk.nix
-        disko.nixosModules.disko
+      specialArgs = {inherit inputs;};
+      modules = [
+        nvf.nixosModules.default
+        ./nvim/nvim.nix
+        ./service/default.nix
+        ./programFiles/default.nix
         ./nixos/configuration.nix
         home-manager.nixosModules.home-manager
         {
           home-manager = {
             useGlobalPkgs = true;
             useUserPackages = true;
-            users.bober = import ./home/bober/home.nix {inherit pkgs inputs;};
+            users.bober = import ./home/bober/home.nix
+            {inherit system pkgs inputs;};
             extraSpecialArgs = {
               inherit inputs;
               inherit (inputs) nur;

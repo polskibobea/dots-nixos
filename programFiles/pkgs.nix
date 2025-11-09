@@ -3,9 +3,16 @@
     (discord.override {withVencord = true;})
     mangohud
     fastfetch
+    inter
+    noto-fonts
+  noto-fonts-extra
+  noto-fonts-cjk-sans
+  noto-fonts-cjk-serif
+  noto-fonts-color-emoji
     vulkan-tools
     pavucontrol
     spotify
+      blueman
     unzip
     qemu
     gamescope
