@@ -6,17 +6,19 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    hjem.url = "github:feel-co/hjem";
     nur = {
       url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    spicetify-nix.url = "github:the-argus/spicetify-nix";
+    spicetify-nix.url = "github:Gerg-L/spicetify-nix";
   };
 
   outputs = {
     nixpkgs,
     home-manager,
     nur,
+    hjem,
     spicetify-nix,
     nvf,
     ...
@@ -32,17 +34,16 @@
       inherit system pkgs;
       specialArgs = {inherit inputs;};
       modules = [
-        nvf.nixosModules.default
-        ./nvim/nvim.nix
-        ./service/default.nix
-        ./programFiles/default.nix
+        hjem.nixosModules.default 
+        nvf.nixosModules.default 
         ./nixos/configuration.nix
+          spicetify-nix.nixosModules.spicetify
         home-manager.nixosModules.home-manager
-        {
+         {
           home-manager = {
             useGlobalPkgs = true;
             useUserPackages = true;
-            users.bober = import ./home/bober/home.nix
+            users.bober = import ./home-manager/home.nix
             {inherit system pkgs inputs;};
             extraSpecialArgs = {
               inherit inputs;
