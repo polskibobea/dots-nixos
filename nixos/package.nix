@@ -9,14 +9,7 @@
     wl-clipboard
     cliphist
     nix-tree
-    lilex
-    fira-code
     nix-tree
-    noto-fonts
-    noto-fonts
-    noto-fonts-cjk-sans
-    noto-fonts-cjk-serif
-    noto-fonts-color-emoji
     vulkan-tools
     pavucontrol
     blueman
@@ -48,7 +41,6 @@
     brightnessctl
     xdg-desktop-portal-wlr
     mesa
-    jetbrains-mono
-    font-awesome
+
   ];
 }

@@ -1,14 +1,25 @@
-{pkgs, ...}:
-{
+{pkgs, ...}: {
+  fonts.fontconfig.enable = true;
 
-fonts.fontconfig.enable = true;
-
-programs.alacritty = {
+  programs.alacritty = {
     enable = true;
     settings = {
-    #font = {
-    #normal = "Lilex";
-    #};
+      font = {
+        normal = {
+          family = "Lilex Nerd Font";
+          style = "Regular";
+        };
+
+        bold = {
+          family = "Lilex Nerd Font";
+          style = "Bold";
+        };
+        italic = {
+          family = "Lilex Nerd Font";
+          style = "Italic";
+        };
+        size = 11.5;
+      };
       shell = {
         program = "/etc/profiles/per-user/bober/bin/zsh";
         args = ["-l"];
