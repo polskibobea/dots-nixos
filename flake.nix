@@ -6,6 +6,10 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    quickshell = {
+      url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     hjem.url = "github:feel-co/hjem";
     nur = {
       url = "github:nix-community/NUR";
@@ -34,7 +38,8 @@
       inherit system pkgs;
       specialArgs = {inherit inputs;};
       modules = [
-        hjem.nixosModules.default 
+        hjem.nixosModules.default
+        ./home/hjem.nix
         nvf.nixosModules.default 
         ./nixos/configuration.nix
           spicetify-nix.nixosModules.spicetify

@@ -1,6 +1,4 @@
 {pkgs, ...}: {
-  fonts.fontconfig.enable = true;
-
   programs.alacritty = {
     enable = true;
     settings = {
