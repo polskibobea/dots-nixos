@@ -3,6 +3,7 @@
     ./hardware-configuration.nix
     ./package.nix
     ./module
+    ./hjem.nix
   ];
 
   boot = {
