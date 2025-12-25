@@ -10,7 +10,7 @@
 
   boot.initrd.availableKernelModules = ["nvme" "xhci_pci" "usbhid" "usb_storage" "sd_mod"];
   boot.initrd.kernelModules = [ "amdgpu" ];
-  boot.kernelModules = [];
+  boot.kernelModules = ["btusb"];
   boot.extraModulePackages = [];
 
   fileSystems."/" = {
@@ -19,7 +19,7 @@
   };
 
   fileSystems."/boot" = {
-    device = "/dev/nvme0n1p2";
+    device = "/dev/nvme0n1p5";
     fsType = "vfat";
     options = ["fmask=0022" "dmask=0022"];
   };

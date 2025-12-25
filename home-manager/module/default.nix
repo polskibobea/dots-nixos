@@ -6,7 +6,7 @@ imports = [
 ./firefox.nix
 ./gtkqt.nix
 ./quickshell.nix
-./hyprland.nix
+    #./hyprland.nix
 ./waybar.nix
 ./wofi.nix
 ./zsh.nix

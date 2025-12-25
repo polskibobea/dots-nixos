@@ -14,8 +14,11 @@ in {
     users.bober = {
       user = "bober";
       directory = "/home/bober";
+        systemd.enable = false; #wyjeb jak hm nie bedzie
     };
     clobberByDefault = true;
     linker = packages.${system}.smfh;
+  
+
   };
 }

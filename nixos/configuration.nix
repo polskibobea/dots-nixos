@@ -32,6 +32,8 @@
     isNormalUser = true;
     extraGroups = ["wheel"];
   };
+  services.upower.enable = true;
+  services.dbus.enable = true;
   hardware.bluetooth = {
   enable = true;
   powerOnBoot = true;

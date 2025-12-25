@@ -2,17 +2,34 @@
   programs.nvf = {
     enable = true;
     settings = {
+      vim.options = {
+        shiftwidth = 2;
+        tabstop = 2;
+        softtabstop = -1;
+        expandtab = true;
+      };
+      vim.autocomplete.nvim-cmp.enable = true;
       vim.viAlias = false;
       vim.vimAlias = true;
+      vim.languages.qml = {
+        enable = true;
+        format.enable = true;
+        treesitter.enable = true;
+        lsp = {
+          enable = true;
+        };
+      };
       vim.languages.nix = {
-      extraDiagnostics.types = [ "statix" "deadnix" ];
-      format.enable = true;
-      treesitter.enable = true;
-      lsp = {
-      enable = true;
-      server = "nixd";
+        enable = true;
+        extraDiagnostics.types = ["statix" "deadnix"];
+        format.enable = true;
+        format.type = ["alejandra"];
+        treesitter.enable = true;
+        lsp = {
+          enable = true;
+          servers = ["nixd"];
+        };
       };
     };
   };
-};
 }

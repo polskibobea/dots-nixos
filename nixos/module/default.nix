@@ -2,6 +2,7 @@
 {...}:
 {
 imports = [
+    ./hyprland.nix
 ./steam.nix
 ./git.nix
 ./alacritty.nix

@@ -2,6 +2,10 @@
   environment.systemPackages = with pkgs; [
     (discord.override {withVencord = true;})
     mangohud
+    nixd
+    statix
+    deadnix
+    nautilus
     fastfetch
     exfatprogs
     inter
@@ -15,7 +19,7 @@
     blueman
     unzip
     qemu
-    kdePackages.dolphin
+    whipper
     gamescope
     hyprshot
     hyprpaper
