@@ -10,6 +10,7 @@
       url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    ags.url = "github:Aylur/ags";
     hjem.url = "github:feel-co/hjem";
     nur = {
       url = "github:nix-community/NUR";
@@ -23,6 +24,7 @@
     home-manager,
     nur,
     hjem,
+    ags,
     spicetify-nix,
     nvf,
     ...

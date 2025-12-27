@@ -2,6 +2,7 @@
 {...}:
 {
 imports = [
+    ./ags
     ./hyprland.nix
 ./steam.nix
 ./git.nix

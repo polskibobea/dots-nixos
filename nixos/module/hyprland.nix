@@ -6,7 +6,7 @@
 bind = SUPER, P, exec, hyprctl dispatch dpms off
 exec-once = dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
     bind = SUPER, L, exec, hyprctl dispatch dpms on
-    exec-once = quickshell
+    exec-once = waybar
     monitor = , 1920x1080@60, auto, 1
     exec-once = wl-paste --type text --watch cliphist store
 exec-once = wl-paste --type image --watch cliphist store
