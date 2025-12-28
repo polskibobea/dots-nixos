@@ -7,7 +7,7 @@ imports = [
 ./gtkqt.nix
 ./quickshell.nix
     #./hyprland.nix
-./waybar.nix
+    #./waybar.nix
 ./wofi.nix
 ./zsh.nix
 ];

@@ -1,7 +1,14 @@
+{pkgs, ...}:
 {
   programs.nvf = {
     enable = true;
     settings = {
+      vim.extraPlugins = with pkgs.vimPlugins; {
+        nvim-highlight-colors = {
+          package = nvim-highlight-colors;
+          setup = "require('nvim-highlight-colors').setup({})"; # Podstawowa inicjalizacja
+        };
+      };
       vim.options = {
         shiftwidth = 2;
         tabstop = 2;
@@ -11,13 +18,11 @@
       vim.autocomplete.nvim-cmp.enable = true;
       vim.viAlias = false;
       vim.vimAlias = true;
-      vim.languages.qml = {
+      vim.languages.css = {
         enable = true;
         format.enable = true;
+        lsp.enable = true;
         treesitter.enable = true;
-        lsp = {
-          enable = true;
-        };
       };
       vim.languages.nix = {
         enable = true;

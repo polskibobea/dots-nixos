@@ -2,6 +2,7 @@
 {...}:
 {
 imports = [
+    ./waybar/waybar.nix
     ./ags
     ./hyprland.nix
 ./steam.nix
