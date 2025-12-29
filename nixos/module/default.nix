@@ -1,17 +1,17 @@
-
-{...}:
-{
-imports = [
+{...}: {
+  imports = [
+    ./firefox.nix 
     ./waybar/waybar.nix
-    ./ags
+    ./zsh.nix
     ./hyprland.nix
-./steam.nix
-./git.nix
-./alacritty.nix
-./pipewire.nix
-./asus.nix
-./nvim.nix
-./spicetify.nix
-./font.nix
-];
+    ./steam.nix
+    ./git.nix
+    ./alacritty.nix
+    ./pipewire.nix
+    ./asus.nix
+    ./nvim.nix
+    ./spicetify.nix
+    ./font.nix
+    ./wofi.nix
+  ];
 }

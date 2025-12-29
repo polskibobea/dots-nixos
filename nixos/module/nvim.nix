@@ -6,7 +6,7 @@
       vim.extraPlugins = with pkgs.vimPlugins; {
         nvim-highlight-colors = {
           package = nvim-highlight-colors;
-          setup = "require('nvim-highlight-colors').setup({})"; # Podstawowa inicjalizacja
+          setup = "require('nvim-highlight-colors').setup({})"; 
         };
       };
       vim.options = {

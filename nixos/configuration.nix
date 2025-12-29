@@ -35,27 +35,51 @@
   services.upower.enable = true;
   services.dbus.enable = true;
   hardware.bluetooth = {
-  enable = true;
-  powerOnBoot = true;
-  settings = {
-    General = {
-      # Shows battery charge of connected devices on supported
-      # Bluetooth adapters. Defaults to 'false'.
-      Experimental = true;
-      # When enabled other devices can connect faster to us, however
-      # the tradeoff is increased power consumption. Defaults to
-      # 'false'.
-      FastConnectable = true;
-    };
-    Policy = {
-      # Enable all controllers when they are found. This includes
-      # adapters present on start as well as adapters that are plugged
-      # in later on. Defaults to 'true'.
-      AutoEnable = true;
+    enable = true;
+    powerOnBoot = true;
+    settings = {
+      General = {
+        Experimental = true;
+        FastConnectable = true;
+      };
+      Policy = {
+        AutoEnable = true;
+      };
     };
   };
-};
-
+  environment.systemPackages = with pkgs; [
+    gnome-themes-extra
+    adwaita-icon-theme
+    glib
+    gsettings-desktop-schemas
+    dconf 
+  ];#tymczasowe
+  services.gvfs.enable = true;
+  qt = {
+    enable = true;
+    platformTheme = "gnome"; # Integruje QT z ustawieniami GNOME/GTK
+    style = "adwaita-dark";
+  };
+  environment.variables = {
+    GTK_THEME = "Adwaita-dark";
+  };
+  xdg.portal = {
+    enable = true;
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+    config.common.default = "gtk";
+  };
+  programs.dconf.enable = true;
+  programs.dconf.profiles.user.databases = [
+    {
+      settings = {
+        "org/gnome/desktop/interface" = {
+          color-scheme = "prefer-dark";
+          gtk-theme = "Adwaita-dark";
+          icon-theme = "Adwaita";
+        };
+      };
+    }
+  ];
 
 
   hardware.graphics = {
@@ -81,7 +105,7 @@
 
   nix.settings.experimental-features = ["flakes" "nix-command"];
   nix.settings.auto-optimise-store = true;
-  boot.loader.systemd-boot.configurationLimit = 5; 
+  boot.loader.systemd-boot.configurationLimit = 5;
   i18n.defaultLocale = "pl_PL.UTF-8";
 
   system.stateVersion = "25.11";
