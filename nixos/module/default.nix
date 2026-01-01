@@ -1,5 +1,6 @@
 {...}: {
   imports = [
+    ./virt.nix
     ./firefox.nix 
     ./waybar/waybar.nix
     ./zsh.nix

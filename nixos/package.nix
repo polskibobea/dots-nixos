@@ -20,6 +20,7 @@
     unzip
     qemu
     whipper
+    android-studio
     gamescope
     hyprshot
     hyprpaper

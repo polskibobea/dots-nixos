@@ -24,6 +24,12 @@
         lsp.enable = true;
         treesitter.enable = true;
       };
+      vim.languages.kotlin ={
+        enable = true;
+        extraDiagnostics.enable = true;
+        lsp.enable = true;
+        treesitter.enable = true;
+      };
       vim.languages.nix = {
         enable = true;
         extraDiagnostics.types = ["statix" "deadnix"];
