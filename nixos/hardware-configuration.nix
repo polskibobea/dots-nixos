@@ -13,16 +13,27 @@
   boot.kernelModules = ["btusb"];
   boot.extraModulePackages = [];
 
-  fileSystems."/" = {
-    device = "/dev/nvme0n1p6";
-    fsType = "btrfs";
+fileSystems."/" = {
+    device = "zroot/root";
+    fsType = "zfs";
   };
 
   fileSystems."/boot" = {
-    device = "/dev/nvme0n1p5";
+    device = "/dev/nvme0n1p1";
     fsType = "vfat";
     options = ["fmask=0022" "dmask=0022"];
   };
+  fileSystems."/nix" = {
+    device = "zroot/nix";
+    fsType = "zfs";
+    options = [ "noatime" "compress=zstd" ];
+  };
+  fileSystems."/home" = {
+    device = "zroot/home";
+    fsType = "zfs";
+    options = [ "noatime" ];
+  };
+
 
   swapDevices = [];
 
