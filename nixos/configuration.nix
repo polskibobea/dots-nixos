@@ -14,6 +14,7 @@
     };
   };
   boot.zfs.devNodes = "/dev/disk/by-partuuid";
+ boot.zfs.forceImportRoot = true
   boot.zfs.forceImportAll = true;
   swapDevices = [
     {
