@@ -13,7 +13,7 @@
       efi.canTouchEfiVariables = true;
     };
   };
-
+  boot.zfs.devNodes = "/dev/disk/by-partuuid";
   swapDevices = [
     {
       device = "/swapfile";
