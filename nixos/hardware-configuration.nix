@@ -14,7 +14,7 @@
   boot.extraModulePackages = [];
 
 fileSystems."/" = {
-    device = "zroot/root";
+    device = "/dev/nvme0n1p2";
     fsType = "zfs";
   };
 
@@ -23,18 +23,6 @@ fileSystems."/" = {
     fsType = "vfat";
     options = ["fmask=0022" "dmask=0022"];
   };
-  fileSystems."/nix" = {
-    device = "zroot/nix";
-    fsType = "zfs";
-    options = [ "noatime" "compress=zstd" ];
-  };
-  fileSystems."/home" = {
-    device = "zroot/home";
-    fsType = "zfs";
-    options = [ "noatime" ];
-  };
-
-
   swapDevices = [];
 
 
