@@ -15,7 +15,7 @@
 
 fileSystems."/" = {
     device = "/dev/nvme0n1p2";
-    fsType = "zfs";
+    fsType = "btrfs";
   };
 
   fileSystems."/boot" = {

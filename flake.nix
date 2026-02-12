@@ -34,7 +34,7 @@
       specialArgs = {inherit inputs;};
       modules = [
         hjem.nixosModules.default
-        nvf.nixosModules.default 
+        nvf.nixosModules.default
         ./nixos/configuration.nix
           spicetify-nix.nixosModules.spicetify
       ];

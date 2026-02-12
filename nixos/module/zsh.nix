@@ -1,5 +1,15 @@
-{...}:
+{pkgs, ...}:
 {
+environment.systemPackages = with pkgs; [
+    fastfetch
+    exfatprogs
+    unzip 
+    btop
+    htop
+    usbutils
+    brightnessctl
+    nix-tree
+  ];
 programs.zsh = {
     enable = true;
     enableCompletion = true;

@@ -1,5 +1,10 @@
 {pkgs, ...}:
 {
+  environment.systemPackages = with pkgs; [
+    easyeffects
+    pavucontrol
+    blueman
+  ];
 services.pipewire = {
   enable = true;
   alsa.enable = true;

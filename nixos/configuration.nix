@@ -24,7 +24,7 @@
     hostName = "bobrowniki";
     networkmanager.enable = true;
   };
-
+  programs.firefox.enable = true;
   time.timeZone = "Europe/Warsaw";
   programs.hyprland.enable = true;
   users.users.bober = {
@@ -53,34 +53,7 @@
     gsettings-desktop-schemas
     dconf 
   ];#tymczasowe
-  services.gvfs.enable = true;
-  qt = {
-    enable = true;
-    platformTheme = "gnome"; # Integruje QT z ustawieniami GNOME/GTK
-    style = "adwaita-dark";
-  };
-  environment.variables = {
-    GTK_THEME = "Adwaita-dark";
-  };
-  xdg.portal = {
-    enable = true;
-    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
-    config.common.default = "gtk";
-  };
-  programs.dconf.enable = true;
-  programs.dconf.profiles.user.databases = [
-    {
-      settings = {
-        "org/gnome/desktop/interface" = {
-          color-scheme = "prefer-dark";
-          gtk-theme = "Adwaita-dark";
-          icon-theme = "Adwaita";
-        };
-      };
-    }
-  ];
-
-
+ 
   hardware.graphics = {
     enable = true;
   };
