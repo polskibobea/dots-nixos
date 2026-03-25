@@ -7,38 +7,50 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     hjem.url = "github:feel-co/hjem";
-    nur = {
-      url = "github:nix-community/NUR";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
   };
 
   outputs = {
     nixpkgs,
-    nur,
     hjem,
     spicetify-nix,
     nvf,
     ...
   } @ inputs: let
-    system = "x86_64-linux";
-    pkgs = import nixpkgs {
-      inherit system;
-      config.allowUnfree = true;
-      overlays = [nur.overlays.default];
-    };
-  in {
-    nixosConfigurations.bobrowniki = nixpkgs.lib.nixosSystem {
-      inherit system pkgs;
-      specialArgs = {inherit inputs;};
-      modules = [
-        hjem.nixosModules.default
+    supportedSystems = ["x86_64-linux" "aarch64-linux"];
+    forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
+      commonModules = [
         nvf.nixosModules.default
-        ./nixos/configuration.nix
-          spicetify-nix.nixosModules.spicetify
+        hjem.nixosModules.default
+        ./common
       ];
+  in {
+    nixosConfigurations = {
+      laptop = nixpkgs.lib.nixosSystem {
+        pkgs = import nixpkgs {
+          system = "x86_64-linux";
+          config.allowUnfree = true;
+        };
+        specialArgs = {inherit inputs;};
+        modules = commonModules ++ [
+          ./hosts/laptop/configuration.nix
+          spicetify-nix.nixosModules.spicetify
+        ];
+      };
+      raspberry = nixpkgs.lib.nixosSystem {
+        pkgs = import nixpkgs {
+          system = "aarch64-linux";
+          config.allowUnfree = true;
+        };
+        specialArgs = {inherit inputs;};
+        modules = commonModules ++ [
+            "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64.nix"
+          ./hosts/raspberry/configuration.nix
+            inputs.nixos-hardware.nixosModules.raspberry-pi-4
+        ];
+      };
     };
-    formatter.${system} = pkgs.alejandra;
+    formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
   };
 }

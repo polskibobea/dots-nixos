@@ -1,9 +1,9 @@
 {pkgs, ...}: {
   imports = [
     ./hardware-configuration.nix
-    ./package.nix
+    #./package.nix
     #./module
-    #  ./hjem.nix
+      ./hjem.nix
   ];
 
   boot = {
