@@ -12,6 +12,7 @@
   ffmpegthumbnailer
   poppler
   libgsf
+  vlc
   fontforge
   viewnior
 ];

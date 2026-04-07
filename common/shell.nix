@@ -1,4 +1,10 @@
-{...}: {
+{pkgs, ...}: {
+    environment.systemPackages = with pkgs; [ 
+    usbutils
+    pciutils 
+    lm_sensors
+    htop
+  ];
   programs.starship.enable = true;
   programs.starship.settings = {
         format = "$username@$hostname$directory$nix_shell$git_branch$status$cmd_duration\n$character";
