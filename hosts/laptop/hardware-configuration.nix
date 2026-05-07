@@ -7,15 +7,20 @@
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
-
+  boot.supportedFilesystems = [ "zfs" ];
   boot.initrd.availableKernelModules = ["nvme" "xhci_pci" "usbhid" "usb_storage" "sd_mod"];
   boot.initrd.kernelModules = [ "amdgpu" ];
   boot.kernelModules = ["btusb"];
   boot.extraModulePackages = [];
 
-fileSystems."/" = {
-    device = "/dev/nvme0n1p6";
-    fsType = "btrfs";
+fileSystems."/" =
+  { device = "rpool/root";
+    fsType = "zfs";
+  };
+
+fileSystems."/home" =
+  { device = "rpool/home";
+    fsType = "zfs";
   };
 
   fileSystems."/boot" = {
