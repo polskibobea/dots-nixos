@@ -5,10 +5,11 @@
     #./module
       ./hjem.nix
   ];
-
+  boot.supportedFilesystems = [ "zfs" ];
+networking.hostId = "4e98920d";
+boot.kernelPackages = config.boot.zfs.package.latestCompatibleLinuxPackages;
   boot = {
-    kernelPackages = pkgs.linuxPackages_zen;
-    loader = {
+loader = {
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
     };
